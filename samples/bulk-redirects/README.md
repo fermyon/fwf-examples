@@ -4,7 +4,7 @@ This sample illustrates how you could bulk redirect requests using an object to 
 
 ## Run the Spin App on your machine
 
-Once you've cloned the repository and moved to the `./samples/bulk-redirects`, install the dependencies, build and run the app:
+Once you've cloned the repository and moved to the `./samples/bulk-redirects`, build and run the Spin app:
 
 ```console
 spin build
