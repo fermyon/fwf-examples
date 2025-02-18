@@ -1,6 +1,6 @@
 # Bulk redirect requests
 
-This sample illustrates how you could bulk redirect requests using an object to map incoming an incoming requests URL to a configured redirect.
+This sample illustrates how you could bulk redirect requests using an object to map incoming requests to a configured redirection target.
 
 ## Run the Spin App on your machine
 
