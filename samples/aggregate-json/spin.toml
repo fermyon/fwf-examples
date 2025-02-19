@@ -1,0 +1,19 @@
+spin_manifest_version = 2
+
+[application]
+authors = ["Fermyon"]
+description = "Send multiple requests to upstream hosts, and aggregate the results"
+name = "aggregate-json"
+version = "0.1.0"
+
+[[trigger.http]]
+route = "/..."
+component = "aggregate-json"
+
+[component.aggregate-json]
+source = "dist/aggregate-json.wasm"
+exclude_files = ["**/node_modules"]
+allowed_outbound_hosts = ["https://random-data-api.fermyon.app"]
+[component.aggregate-json.build]
+command = ["npm install", "npm run build"]
+watch = ["src/**/*.ts"]
