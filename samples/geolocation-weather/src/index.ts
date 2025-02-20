@@ -9,15 +9,19 @@ let router = AutoRouter();
 // Route ordering matters, the first route that matches will be used
 // Any route that does not return will be treated as a middleware
 // Any unmatched route will return a 404
-router
-    .get("/", getWeather);
+router.get("/", (request, {token}) => getWeather(request, token)) 
 
 //@ts-ignore
 addEventListener('fetch', async (event: FetchEvent) => {
-    event.respondWith(router.fetch(event.request));
+   let token = Variables.get("waqi_api_token");
+   if (!token) {
+     console.log("required waqi_api_token variable not found");
+     event.respondWith(new Response("Internal Server Error", {status: 500}));
+   }
+    event.respondWith(router.fetch(event.request, {token}));
 });
 
-async function getWeather(request: Request): Promise<Response> {
+async function getWeather(request: Request, token: string): Promise<Response> {
   console.log("Request received", request.headers.get("spin-client-addr"));
 
   const clientAddress = getClientAddressFromRequest(request);
@@ -41,7 +45,6 @@ async function getWeather(request: Request): Promise<Response> {
 
   
   let endpoint = "https://api.waqi.info/feed/geo:";
-  let token = Variables.get("waqi_api_token"); //Use a token from https://aqicn.org/api/
   let html_style = `body{padding:6em; font-family: sans-serif;} h1{color:#f6821f}`;
 
   let html_content = "<h1>Weather 🌦</h1>";
@@ -54,7 +57,6 @@ async function getWeather(request: Request): Promise<Response> {
   };
 
   const response = await fetch(endpoint, init);
-  console.log("response", response.status);
   if (response.status !== 200) {
     return new Response("Failed to get weather info", { status: 500 });
   }
