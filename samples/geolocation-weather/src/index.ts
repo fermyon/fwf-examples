@@ -1,3 +1,8 @@
+// This example was adapted from Cloudflare Workers as a familiar starting point for
+// demonstrating how you can migrate your workload to a Spin app on Fermyon Wasm Functions.
+// Source: https://developers.cloudflare.com/workers/examples/geolocation-app-weather/
+// The original example is provided by Cloudflare under the MIT License.
+
 // For AutoRouter documentation refer to https://itty.dev/itty-router/routers/autorouter
 import { AutoRouter } from 'itty-router';
 import { getClientAddressFromRequest, cleanupIpAddress } from "./helpers";
