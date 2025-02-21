@@ -18,4 +18,5 @@
 - [Traffic Filtering: Block By user country](./samples/block-by-country/)
 - [Response Header Modification](./samples/response-header-modification/)
 - [Promo Code Validation](./samples/validate-promo-codes/)
-- [Early Hints with HarperDB](./samples/early-hints-rust) 
+- [Early Hints with HarperDB](./samples/early-hints-rust)
+- [Fetch JSON](./samples/fetch-json)
