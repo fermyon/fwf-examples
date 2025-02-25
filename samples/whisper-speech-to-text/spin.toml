@@ -1,0 +1,33 @@
+spin_manifest_version = 2
+
+[application]
+name = "livecaptions"
+version = "0.1.0"
+authors = ["Radu Matei <radu@fermyon.com>"]
+
+[variables]
+# This is a currently deployed transcription API endpoint
+# This may not be available by the time you run this sample.
+transcription_api = { default = "http://172.236.120.221:30001/v1/audio/transcriptions" }
+
+[[trigger.http]]
+route = "/api/..."
+component = "captions"
+
+[component.captions]
+source = "captions/dist/captions.wasm"
+allowed_outbound_hosts = ["http://172.236.120.221:30001"]
+[component.captions.variables]
+transcription_api = "{{transcription_api}}"
+
+[component.captions.build]
+command = "npm install && npm run build"
+workdir = "captions"
+
+[[trigger.http]]
+route = "/..."
+component = "wwwroot"
+
+[component.wwwroot]
+source = { url = "https://github.com/fermyon/spin-fileserver/releases/download/v0.3.0/spin_static_fs.wasm", digest = "sha256:ef88708817e107bf49985c7cefe4dd1f199bf26f6727819183d5c996baa3d148" }
+files = [{ source = "wwwroot", destination = "/" }]
