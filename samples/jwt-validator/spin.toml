@@ -1,0 +1,27 @@
+spin_manifest_version = 2
+
+[application]
+name = "jwt-validator"
+version = "0.1.0"
+authors = ["Thorsten Hans <thorsten.hans@fermyon.com>"]
+description = ""
+
+[variables]
+oidc_url = { default = "https://idsrv.purplesky-721836c2.eastus.azurecontainerapps.io" }
+[[trigger.http]]
+route = "/..."
+component = "jwt-validator"
+
+[component.jwt-validator]
+source = "target/wasm32-wasip1/release/jwt_validator.wasm"
+# The JWT validator is able to validate JWT tokens issued by OAuth 2.0 compliant IDPs
+# Explicitly listing IDP origin(s) that issue tokens for this particular application
+# is highly recommended.
+allowed_outbound_hosts = ["{{ oidc_url }}"]
+
+[component.jwt-validator.variables]
+oidc_url = "{{ oidc_url }}"
+
+[component.jwt-validator.build]
+command = "cargo build --target wasm32-wasip1 --release"
+watch = ["src/**/*.rs", "Cargo.toml"]

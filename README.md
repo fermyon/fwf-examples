@@ -19,3 +19,4 @@
 - [Response Header Modification](./samples/response-header-modification/)
 - [Promo Code Validation](./samples/validate-promo-codes/)
 - [Early Hints with HarperDB](./samples/early-hints-rust) 
+- [JWT Validator](./samples/jwt-validator/)

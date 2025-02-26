@@ -1,0 +1,18 @@
+[package]
+name = "jwt-validator"
+authors = ["Thorsten Hans <thorsten.hans@fermyon.com>"]
+description = ""
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+anyhow = "1.0.96"
+spin-sdk = "3.1.0"
+jwks-client = { path = "./crates/jwks-client" }
+serde_json = "1.0.139"
+serde = { version = "1.0.218", features = ["derive"] }
+
+[workspace]
