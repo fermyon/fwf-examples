@@ -1,0 +1,13 @@
+[package]
+name = "jwks-client"
+version = "0.2.0"
+edition = "2018"
+description = "Crate to validate JWT tokens using JSON Web Key Set (JWKS)"
+
+[dependencies]
+base64 = "0.22.1"
+serde = { version = "1.0.211", features = ["derive"] }
+serde_json = "1.0.132"
+spin-sdk = "3.0.1"
+regex = "1.11.0"
+ring = { version = "0.17.8", features = ["wasm32_unknown_unknown_js"] }
