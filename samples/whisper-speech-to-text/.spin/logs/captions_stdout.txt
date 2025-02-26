@@ -1,0 +1,36 @@
+Received request: bound Request { query: {}, proxy: <Circular>, params: {}, route: "/api/transcribe", method: "POST", url: "http://localhost:3009/api/transcribe", headers: Headers {}, body: ReadableStream { locked: false }, bodyUsed: false, arrayBuffer: Function {}, blob: Function {}, formData: Function {}, json: Function {}, text: Function {}, clone: Function {} }
+Received audio data of size 33274
+Received request: bound Request { query: {}, proxy: <Circular>, params: {}, route: "/api/transcribe", method: "POST", url: "http://localhost:3009/api/transcribe", headers: Headers {}, body: ReadableStream { locked: false }, bodyUsed: false, arrayBuffer: Function {}, blob: Function {}, formData: Function {}, json: Function {}, text: Function {}, clone: Function {} }
+Received audio data of size 40327
+Received request: bound Request { query: {}, proxy: <Circular>, params: {}, route: "/api/transcribe", method: "POST", url: "http://localhost:3009/api/transcribe", headers: Headers {}, body: ReadableStream { locked: false }, bodyUsed: false, arrayBuffer: Function {}, blob: Function {}, formData: Function {}, json: Function {}, text: Function {}, clone: Function {} }
+Received audio data of size 40131
+Received request: bound Request { query: {}, proxy: <Circular>, params: {}, route: "/api/transcribe", method: "POST", url: "http://localhost:3009/api/transcribe", headers: Headers {}, body: ReadableStream { locked: false }, bodyUsed: false, arrayBuffer: Function {}, blob: Function {}, formData: Function {}, json: Function {}, text: Function {}, clone: Function {} }
+Received audio data of size 32312
+Received request: bound Request { query: {}, proxy: <Circular>, params: {}, route: "/api/transcribe", method: "POST", url: "http://localhost:3009/api/transcribe", headers: Headers {}, body: ReadableStream { locked: false }, bodyUsed: false, arrayBuffer: Function {}, blob: Function {}, formData: Function {}, json: Function {}, text: Function {}, clone: Function {} }
+Received audio data of size 40223
+Received request: bound Request { query: {}, proxy: <Circular>, params: {}, route: "/api/transcribe", method: "POST", url: "http://localhost:3009/api/transcribe", headers: Headers {}, body: ReadableStream { locked: false }, bodyUsed: false, arrayBuffer: Function {}, blob: Function {}, formData: Function {}, json: Function {}, text: Function {}, clone: Function {} }
+Received audio data of size 32303
+Received request: bound Request { query: {}, proxy: <Circular>, params: {}, route: "/api/transcribe", method: "POST", url: "http://localhost:3009/api/transcribe", headers: Headers {}, body: ReadableStream { locked: false }, bodyUsed: false, arrayBuffer: Function {}, blob: Function {}, formData: Function {}, json: Function {}, text: Function {}, clone: Function {} }
+Received audio data of size 40354
+Received request: bound Request { query: {}, proxy: <Circular>, params: {}, route: "/api/transcribe", method: "POST", url: "http://localhost:3009/api/transcribe", headers: Headers {}, body: ReadableStream { locked: false }, bodyUsed: false, arrayBuffer: Function {}, blob: Function {}, formData: Function {}, json: Function {}, text: Function {}, clone: Function {} }
+Received audio data of size 33235
+Received request: bound Request { query: {}, proxy: <Circular>, params: {}, route: "/api/transcribe", method: "POST", url: "http://localhost:3009/api/transcribe", headers: Headers {}, body: ReadableStream { locked: false }, bodyUsed: false, arrayBuffer: Function {}, blob: Function {}, formData: Function {}, json: Function {}, text: Function {}, clone: Function {} }
+Received audio data of size 40318
+Received request: bound Request { query: {}, proxy: <Circular>, params: {}, route: "/api/transcribe", method: "POST", url: "http://localhost:3009/api/transcribe", headers: Headers {}, body: ReadableStream { locked: false }, bodyUsed: false, arrayBuffer: Function {}, blob: Function {}, formData: Function {}, json: Function {}, text: Function {}, clone: Function {} }
+Received audio data of size 33300
+Received request: bound Request { query: {}, proxy: <Circular>, params: {}, route: "/api/transcribe", method: "POST", url: "http://localhost:3009/api/transcribe", headers: Headers {}, body: ReadableStream { locked: false }, bodyUsed: false, arrayBuffer: Function {}, blob: Function {}, formData: Function {}, json: Function {}, text: Function {}, clone: Function {} }
+Received audio data of size 33239
+Transcription API: null
+Received request: bound Request { query: {}, proxy: <Circular>, params: {}, route: "/api/transcribe", method: "POST", url: "http://localhost:3009/api/transcribe", headers: Headers {}, body: ReadableStream { locked: false }, bodyUsed: false, arrayBuffer: Function {}, blob: Function {}, formData: Function {}, json: Function {}, text: Function {}, clone: Function {} }
+Received audio data of size 40343
+Transcription API: null
+Received request: bound Request { query: {}, proxy: <Circular>, params: {}, route: "/api/transcribe", method: "POST", url: "http://localhost:3009/api/transcribe", headers: Headers {}, body: ReadableStream { locked: false }, bodyUsed: false, arrayBuffer: Function {}, blob: Function {}, formData: Function {}, json: Function {}, text: Function {}, clone: Function {} }
+Received audio data of size 26674
+Transcription API: null
+Received request: bound Request { query: {}, proxy: <Circular>, params: {}, route: "/api/transcribe", method: "POST", url: "http://localhost:3009/api/transcribe", headers: Headers {}, body: ReadableStream { locked: false }, bodyUsed: false, arrayBuffer: Function {}, blob: Function {}, formData: Function {}, json: Function {}, text: Function {}, clone: Function {} }
+Received audio data of size 33515
+Transcription API: null
+Received request: bound Request { query: {}, proxy: <Circular>, params: {}, route: "/api/transcribe", method: "POST", url: "http://localhost:3009/api/transcribe", headers: Headers {}, body: ReadableStream { locked: false }, bodyUsed: false, arrayBuffer: Function {}, blob: Function {}, formData: Function {}, json: Function {}, text: Function {}, clone: Function {} }
+Received audio data of size 33517
+Received request: bound Request { query: {}, proxy: <Circular>, params: {}, route: "/api/transcribe", method: "POST", url: "http://localhost:3009/api/transcribe", headers: Headers {}, body: ReadableStream { locked: false }, bodyUsed: false, arrayBuffer: Function {}, blob: Function {}, formData: Function {}, json: Function {}, text: Function {}, clone: Function {} }
+Received audio data of size 40338
