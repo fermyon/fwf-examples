@@ -1,0 +1,22 @@
+spin_manifest_version = 2
+
+[application]
+name = "graphql"
+version = "0.1.0"
+authors = ["Till Schneidereit <till@tillschneidereit.net>"]
+description = "GraphQL experiments"
+
+[variables]
+gh_api_token = { secret = true, required = true }
+
+[[trigger.http]]
+route = "/..."
+component = "graphql"
+
+[component.graphql]
+source = "target/wasm32-wasip1/release/graphql.wasm"
+allowed_outbound_hosts = ["https://api.github.com"]
+variables = { gh_api_token = "{{ gh_api_token }}" }
+[component.graphql.build]
+command = "cargo build --target wasm32-wasip1 --release"
+watch = ["src/**/*.rs", "Cargo.toml"]
