@@ -1,0 +1,19 @@
+spin_manifest_version = 2
+
+[application]
+authors = ["itowlson <ivan.towlson@fermyon.com>"]
+description = "Respond to a request with the response from another site"
+name = "respond-with-another-site"
+version = "0.1.0"
+
+[[trigger.http]]
+route = "/..."
+component = "respond-with-another-site"
+
+[component.respond-with-another-site]
+source = "dist/respond-with-another-site.wasm"
+allowed_outbound_hosts = ["https://random-data-api.fermyon.app"]
+exclude_files = ["**/node_modules"]
+[component.respond-with-another-site.build]
+command = ["npm install", "npm run build"]
+watch = ["src/**/*.ts"]
