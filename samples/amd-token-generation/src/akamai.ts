@@ -103,7 +103,8 @@ export class AkamaiTokenGenerator {
         const encoder = new TextEncoder();
         const data = encoder.encode(message);
 
-        // Use crypto.subtle.sign instead of crypto.hmac
+        // The WebCrypto API exposes HMAC hashing through crypto.subtle.sign.
+        // See https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/sign#hmac for details.
         const key = await crypto.subtle.importKey(
             'raw',
             this.key,
