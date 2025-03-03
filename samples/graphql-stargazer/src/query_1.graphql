@@ -1,0 +1,8 @@
+query RepoView($owner: String!, $name: String!) {
+  repository(owner: $owner, name: $name) {
+    homepageUrl
+    stargazers {
+      totalCount
+    }
+  }
+}
