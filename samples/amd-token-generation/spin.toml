@@ -1,0 +1,23 @@
+spin_manifest_version = 2
+
+[application]
+authors = ["Radu Matei <radu@fermyon.com>"]
+description = ""
+name = "amd-token-generation"
+version = "0.1.0"
+
+[variables]
+encryption_key = { required = true }
+
+[[trigger.http]]
+route = "/..."
+component = "amd-token-generation"
+
+[component.amd-token-generation]
+source = "dist/amd-token-generation.wasm"
+exclude_files = ["**/node_modules"]
+[component.amd-token-generation.variables]
+encryption_key = "{{encryption_key}}"
+[component.amd-token-generation.build]
+command = ["npm install", "npm run build"]
+watch = ["src/**/*.ts"]
