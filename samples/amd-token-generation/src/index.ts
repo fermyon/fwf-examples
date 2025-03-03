@@ -8,7 +8,7 @@ router
     .get("/", () => new Response("Akamai URL Token Generation Service"))
 
     // Simple endpoint to generate a token for a specific URL
-    .get('/token', async (request) => {
+    .get('/jsapi/token', async (request) => {
         let key = Variables.get('encryption_key');
         if (!key) {
             console.error('Encryption key is not set');

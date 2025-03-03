@@ -34,13 +34,13 @@ To generate a token, make a GET request to the `/token` endpoint with the follow
 
 ```bash
 # Basic token generation
-curl "http://localhost:3000/token?url=https://example.com/video/sample.mp4"
+curl "http://localhost:3000/jsapi/token?url=https://example.com/video/sample.mp4"
 
 # Token with custom window (2 hours)
-curl "http://localhost:3000/token?url=https://example.com/video/sample.mp4&window=7200"
+curl "http://localhost:3000/jsapi/token?url=https://example.com/video/sample.mp4&window=7200"
 
 # Token with specific start time, IP restriction, and session ID
-curl "http://localhost:3000/token?url=https://example.com/video/sample.mp4&start_time=1718483200&ip=203.0.113.1&session_id=user123"
+curl "http://localhost:3000/jsapi/token?url=https://example.com/video/sample.mp4&start_time=1718483200&ip=203.0.113.1&session_id=user123"
 ```
 
 ### Building from source and running locally
@@ -74,4 +74,19 @@ Token Configuration:
 
 ```bash
 $ spin aka deploy --variable encryption_key=$SPIN_VARIABLE_ENCRYPTION_KEY 
+```
+
+### Rust Implementation
+
+This repository also contains a Rust implementation:
+
+```bash
+# Basic token generation
+curl "http://localhost:3000/rustapi/token?url=https://example.com/video/sample.mp4"
+
+# Token with custom window (2 hours)
+curl "http://localhost:3000/rustapi/token?url=https://example.com/video/sample.mp4&window=7200"
+
+# Token with specific start time, IP restriction, and session ID
+curl "http://localhost:3000/rustapi/token?url=https://example.com/video/sample.mp4&start_time=1718483200&ip=203.0.113.1&session_id=user123"
 ```
