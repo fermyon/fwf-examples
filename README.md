@@ -15,6 +15,8 @@
 - [A/B Testing using HTTP Headers (e.g User Agent)](./samples/ab-testing-user-agent/)
 - [Alter Response Headers](./samples/alter-headers/)
 - [Auto-Complete API](./samples/auto-complete/e/)
+- [Auto-Complete API](./samples/hot-link-protection/)
+- [Hot-Link Protection](./samples/hot-link-protection/)
 - [Traffic Filtering: Block By IP address](./samples/block-by-ip/)
 - [Traffic Filtering: Block By user country](./samples/block-by-country/)
 - [Reading the Body of a POST Request](./samples/read-post/)
