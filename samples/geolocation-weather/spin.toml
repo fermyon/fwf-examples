@@ -1,0 +1,26 @@
+spin_manifest_version = 2
+
+[application]
+authors = ["John Doe <john@example.com>"]
+description = ""
+name = "geolocation-weather-application"
+version = "0.1.0"
+
+[variables]
+waqi_api_token = { required = true }
+test_ip_addr = { default = "63.65.232.194" }
+
+[[trigger.http]]
+route = "/..."
+component = "geolocation-weather-application"
+
+[component.geolocation-weather-application]
+allowed_outbound_hosts = ["https://api.waqi.info", "https://ip-api.io"]
+source = "dist/geolocation-weather-application.wasm"
+exclude_files = ["**/node_modules"]
+[component.geolocation-weather-application.build]
+command = ["npm install", "npm run build"]
+watch = ["src/**/*.ts"]
+[component.geolocation-weather-application.variables]
+waqi_api_token = "{{ waqi_api_token }}"
+test_ip_addr = "{{ test_ip_addr }}"
