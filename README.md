@@ -18,6 +18,7 @@
 - [Cookie Parsing](./samples/parse-cookie/)
 - [Traffic Filtering: Block By IP address](./samples/block-by-ip/)
 - [Traffic Filtering: Block By user country](./samples/block-by-country/)
+- [Traffic mirroring and splitting](./samples/traffic-splitting/)
 - [Reading the Body of a POST Request](./samples/read-post/)
 - [Respond with Another Site](./samples/respond-with-another-site/)
 - [Response Header Modification](./samples/response-header-modification/)

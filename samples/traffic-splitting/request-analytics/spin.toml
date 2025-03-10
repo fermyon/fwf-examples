@@ -1,0 +1,30 @@
+spin_manifest_version = 2
+
+[application]
+name = "request-analytics"
+version = "0.1.0"
+authors = ["Radu Matei <radu@fermyon.com>"]
+description = "A simple traffic mirroring application"
+
+
+[variables]
+upstream_host = { required = true }
+fwaffic_url = { required = true }
+fwaffic_app_id = { required = true }
+fwaffic_key = { required = true }
+
+[[trigger.http]]
+route = "/..."
+component = "request-analytics"
+
+[component.request-analytics]
+source = "dist/request-analytics.wasm"
+allowed_outbound_hosts = ["*://{{upstream_host}}:*", "{{fwaffic_url}}"]
+[component.request-analytics.variables]
+upstream_host = "{{upstream_host}}"
+fwaffic_url = "{{fwaffic_url}}"
+fwaffic_app_id = "{{fwaffic_app_id}}"
+fwaffic_key = "{{fwaffic_key}}"
+
+[component.request-analytics.build]
+command = "npm install && npm run build"

@@ -1,0 +1,51 @@
+spin_manifest_version = 2
+
+[application]
+name = "fwaffic"
+version = "0.1.0"
+authors = ["Radu Matei <radu@fermyon.com>"]
+description = "A simple traffic mirroring application"
+
+[variables]
+database_url = { required = true }
+database_token = { required = true }
+github_client_id = { required = true }
+github_client_secret = { required = true }
+github_callback_url = { required = true }
+
+[[trigger.http]]
+route = "/api/..."
+component = "api"
+
+
+[[trigger.http]]
+route = "/..."
+component = "ui"
+
+[component.api]
+source = "api/dist/api.wasm"
+allowed_outbound_hosts = [
+    "{{database_url}}",
+    "https://github.com",
+    "https://api.github.com",
+    "https://api.honeycomb.io",
+]
+[component.api.variables]
+database_url = "{{database_url}}"
+database_token = "{{database_token}}"
+github_client_id = "{{github_client_id}}"
+github_client_secret = "{{github_client_secret}}"
+github_callback_url = "{{github_callback_url}}"
+
+[component.api.build]
+command = "npm install && npm run build"
+workdir = "api"
+
+# Using a custom build of the file server that handles percent encoded file paths that Next.js produces.
+[component.ui]
+source = { url = "https://raw.githubusercontent.com/radu-matei/spin-fileserver/feat/percent-encoding-bin/spin_static_fs.wasm", digest = "sha256:18751ae2d62554561afe811c59d15b62112ed5eb1b236881d2c1c73968681761" }
+files = [{ source = "ui/out", destination = "/" }]
+environment = { FALLBACK_PATH = "index.html" }
+[component.ui.build]
+workdir = "ui"
+command = ["pnpm install", "pnpm run build"]

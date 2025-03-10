@@ -1,0 +1,5 @@
+*.wasm
+.spin/
+node_modules/
+.DS_Store
+.spin-aka/

@@ -1,0 +1,7 @@
+[key_value_store.apps]
+type = "spin"
+path = ".spin/apps.db"
+
+[key_value_store.requests]
+type = "spin"
+path = ".spin/requests.db"
