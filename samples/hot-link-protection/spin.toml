@@ -1,0 +1,24 @@
+spin_manifest_version = 2
+
+[application]
+authors = ["itowlson <ivan.towlson@fermyon.com>"]
+description = "Prevent other sites from embedding your images"
+name = "hot-link-protection"
+version = "0.1.0"
+
+[variables]
+origin_host = { default = "developer.fermyon.com" }
+
+[[trigger.http]]
+route = "/..."
+component = "hot-link-protection"
+
+[component.hot-link-protection]
+source = "dist/hot-link-protection.wasm"
+allowed_outbound_hosts = ["https://{{ origin_host }}"]
+exclude_files = ["**/node_modules"]
+[component.hot-link-protection.variables]
+origin_host = "{{ origin_host }}"
+[component.hot-link-protection.build]
+command = ["npm install", "npm run build"]
+watch = ["src/**/*.ts"]
