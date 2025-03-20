@@ -9,6 +9,7 @@ Both implementations accept the following configuration parameters:
 |----------------|------|-------------|
 | `upstream_url` | `string` | The desired upstream URL (request path will be appended before requests are sent to upstream) |
 | `use_kv_store` | `boolean` | Indicating if key-value store should be used |
+| `ttl_in_minutes` | `number` | Specify how long a upstream HTML document should remain in key-value store |
 
 
 ## Key-Value Store usage

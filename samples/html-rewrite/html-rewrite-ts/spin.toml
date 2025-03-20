@@ -9,6 +9,7 @@ version = "0.1.0"
 [variables]
 upstream_url = { default = "https://www.fermyon.com" }
 use_kv_store = { default = "true" }
+ttl_in_minutes = { default = "60" }
 
 [[trigger.http]]
 route = "/..."
@@ -23,6 +24,7 @@ key_value_stores = ["default"]
 [component.html-rewrite-ts.variables]
 upstream_url = "{{ upstream_url }}"
 use_kv_store = "{{ use_kv_store }}"
+ttl_in_minutes = "{{ ttl_in_minutes }}"
 
 [component.html-rewrite-ts.build]
 command = ["npm install", "npm run build"]
