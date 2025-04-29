@@ -17,6 +17,7 @@
 - [Alter Response Headers](./samples/alter-headers/)
 - [Auto-Complete API](./samples/auto-complete/)
 - [Cookie Parsing](./samples/parse-cookie/)
+- [Hot-Link Protection](./samples/hot-link-protection/)
 - [Traffic Filtering: Block By IP address](./samples/block-by-ip/)
 - [Traffic Filtering: Block By user country](./samples/block-by-country/)
 - [Traffic mirroring and splitting](./samples/traffic-splitting/)
