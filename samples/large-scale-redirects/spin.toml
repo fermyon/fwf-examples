@@ -1,0 +1,18 @@
+spin_manifest_version = 2
+
+[application]
+name = "redirects-rs"
+version = "0.1.0"
+authors = ["Till Schneidereit <till@tillschneidereit.net>"]
+description = "Fast HTTP redirects in Rust"
+
+[[trigger.http]]
+route = "/..."
+component = "redirects-rs"
+
+[component.redirects-rs]
+source = "target/redirect.wasm"
+allowed_outbound_hosts = []
+[component.redirects-rs.build]
+command = "./build.sh example-redirects.txt"
+watch = ["src/**/*.rs", "Cargo.toml", "build.sh", "redirects.txt"]

@@ -1,0 +1,3 @@
+# Validated redirects, DO NOT EDIT. EDITING WILL CAUSE INCORRECT REDIRECTS!
+/a /b
+/c /d

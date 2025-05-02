@@ -1,0 +1,28 @@
+[package]
+name = "redirects-rs"
+authors = ["Till Schneidereit <till@tillschneidereit.net>"]
+description = "Fast HTTP redirects in Rust"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = "symbols"
+
+[dependencies]
+fcsd.workspace = true
+fst.workspace = true
+wasi = "=0.14.2"
+
+[workspace]
+members = ["rules-manager"]
+
+[workspace.dependencies]
+fcsd = "0.2.0"
+fst = "0.4.7"
