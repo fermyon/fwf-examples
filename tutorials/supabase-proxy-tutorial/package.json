@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@fermyon/spin-sdk": "^3.0.0",
-    "@supabase/supabase-js": "^2.48.1",
+    "@supabase/supabase-js": "^2.50.0",
     "itty-router": "^5.0.18"
   }
 }
