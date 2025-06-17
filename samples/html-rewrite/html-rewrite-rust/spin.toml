@@ -1,0 +1,28 @@
+spin_manifest_version = 2
+
+[application]
+name = "html-rewrite"
+version = "0.1.0"
+authors = ["Thorsten Hans <thorsten.hans@fermyon.com>"]
+description = ""
+
+[variables]
+upstream_url = { default = "https://www.fermyon.com" }
+use_kv_store = { default = "true" }
+
+[[trigger.http]]
+route = "/..."
+component = "html-rewrite"
+
+[component.html-rewrite]
+source = "target/wasm32-wasip1/release/html_rewrite.wasm"
+allowed_outbound_hosts = ["{{ upstream_url }}"]
+key_value_stores = ["default"]
+
+[component.html-rewrite.variables]
+upstream_url = "{{ upstream_url }}"
+use_kv_store = "{{ use_kv_store }}"
+
+[component.html-rewrite.build]
+command = "cargo build --target wasm32-wasip1 --release"
+watch = ["src/**/*.rs", "Cargo.toml"]
