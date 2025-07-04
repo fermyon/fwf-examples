@@ -1,0 +1,31 @@
+spin_manifest_version = 2
+
+[application]
+authors = ["Thorsten Hans <thorsten.hans@fermyon.com>"]
+description = ""
+name = "html-rewrite-ts"
+version = "0.1.0"
+
+[variables]
+upstream_url = { default = "https://www.fermyon.com" }
+use_kv_store = { default = "true" }
+ttl_in_minutes = { default = "60" }
+
+[[trigger.http]]
+route = "/..."
+component = "html-rewrite-ts"
+
+[component.html-rewrite-ts]
+source = "dist/html-rewrite-ts.wasm"
+exclude_files = ["**/node_modules"]
+allowed_outbound_hosts = ["{{ upstream_url }}"]
+key_value_stores = ["default"]
+
+[component.html-rewrite-ts.variables]
+upstream_url = "{{ upstream_url }}"
+use_kv_store = "{{ use_kv_store }}"
+ttl_in_minutes = "{{ ttl_in_minutes }}"
+
+[component.html-rewrite-ts.build]
+command = ["npm install", "npm run build"]
+watch = ["src/**/*.ts"]
