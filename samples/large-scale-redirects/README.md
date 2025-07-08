@@ -18,6 +18,21 @@ for compact storage of target URLs.
 
 The `rules-manager` CLI validates, merges, and encodes redirect rules from plain text to optimized binary formats.
 
+## Prerequisites
+
+- [Rust toolchain](https://www.rust-lang.org/tools/install) (stable version)
+- The `wasm32-wasip1` target for Rust: `rustup target add wasm32-wasip1`
+- [wizer](https://github.com/bytecodealliance/wizer): `cargo install wizer --all-features`
+
+Install the prerequisites using:
+
+```
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source $HOME/.cargo/env
+rustup target add wasm32-wasip1
+cargo install wizer --all-features
+```
+
 ### Build the CLI
 
 ```shell
@@ -52,15 +67,13 @@ Rules must follow these conventions:
 ### Run the CLI
 
 ```shell
-./rules-manager \
-  --existing-rules existing_validated.txt \   # Optional: One or more previously validated rule files
-  --add-rules new_rules1.txt new_rules2.txt \ # Optional: One or more new rule files
-  --default-status-code 302 \                 # Default status code for redirects (default: 302)
-  --include-existing \                        # Optional: Include existing rules in output
-  --output-dir ./output \                     # Store all output files here (default: current directory)
-  --rules-output-file merged.txt \            # Where to store new validated rules (default: new_redirects.txt)
-  --encoded-sources sources.fst \             # Binary FST output (default: sources.fst)
-  --encoded-targets targets.fcsd              # Binary FCSD output (default: targets.fcsd)
+./target/release/rules-manager \
+  --add-rules example-redirects.txt \  # Optional: One or more new rule files
+  --include-existing \                 # Optional: Include existing rules in output
+  --output-dir ./output \              # Store all output files here (default: current directory)
+  --rules-output-file redirects.txt \  # Where to store new validated rules (default: new_redirects.txt)
+  --encoded-sources sources.fst \      # Binary FST output (default: sources.fst)
+  --encoded-targets targets.fcsd       # Binary FCSD output (default: targets.fcsd)
 ```
 
 #### Validation Options
@@ -111,8 +124,8 @@ Typical workflow for deploying redirects:
 
 ### Prerequisites
 
-Besides Spin, building the redirecter component requires the [wizer](https://github.com/bytecodealliance/wizer)
-WebAssembly snapshotting tool.
+Besides Spin, building the redirecter component requires the
+[wizer](https://github.com/bytecodealliance/wizer) WebAssembly snapshot tool.
 
 ### Building
 
