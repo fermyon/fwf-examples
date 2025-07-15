@@ -7,7 +7,7 @@ const getClientAddressFromRequest = (req: Request): string | null => {
 };
 
 const cleanupIpAddress = (input: string): string => {
-    const ipv4Regex = /^(\\d{1,3}\\.){3}\d{1,3}:/;
+    const ipv4Regex = /^(\d{1,3}\.){3}\d{1,3}$/;
     const ipv4RegexWithPort = /^(\d{1,3}\.){3}\d{1,3}:\d+$/;
     const ipv6Regex = /^([a-fA-F0-9:]+)$/; 
     const ipv6WithPortRegex = /^\[([a-fA-F0-9:]+)\]:\d+$/;

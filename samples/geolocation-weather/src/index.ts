@@ -27,7 +27,7 @@ addEventListener('fetch', async (event: FetchEvent) => {
 });
 
 async function getWeather(request: Request, token: string): Promise<Response> {
-  console.log("Request received", request.headers.get("spin-client-addr"));
+  console.log("Request received");
 
   const clientAddress = getClientAddressFromRequest(request);
   if (!clientAddress) {
