@@ -1,23 +1,36 @@
-const path = require('path');
-const SpinSdkPlugin = require("@fermyon/spin-sdk/plugins/webpack")
+import path from 'path';
+import SpinSdkPlugin from "@spinframework/build-tools/plugins/webpack/index.js";
 
-module.exports = {
-    entry: './src/index.js',
-    experiments: {
-        outputModule: true,
-    },
-    output: {
-        path: path.resolve(__dirname, './build'),
-        filename: 'bundle.js',
-        module: true,
-        library: {
-            type: "module",
+const config = async () => {
+    let SpinPlugin = await SpinSdkPlugin.init()
+    return {
+        mode: 'production',
+        stats: 'errors-only',
+        entry: './src/index.js',
+        experiments: {
+            outputModule: true,
+        },
+
+        resolve: {
+            extensions: ['.js'],
+        },
+        output: {
+            path: path.resolve(process.cwd(), './build'),
+            filename: 'bundle.js',
+            module: true,
+            library: {
+                type: "module",
+            }
+        },
+        plugins: [
+            SpinPlugin
+        ],
+        optimization: {
+            minimize: false
+        },
+        performance: {
+            hints: false,
         }
-    },
-    plugins: [
-        new SpinSdkPlugin()
-    ],
-    optimization: {
-        minimize: false
-    },
-};
+    };
+}
+export default config

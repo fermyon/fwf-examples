@@ -1,6 +1,7 @@
 // https://itty.dev/itty-router/routers/autorouter
 import { AutoRouter } from 'itty-router';
-import { Variables, Postgres } from "@fermyon/spin-sdk";
+import * as Variables from '@spinframework/spin-variables';
+import * as Postgres from '@spinframework/spin-postgres';
 import { v4 as uuidv4 } from 'uuid';
 import { validate as uuidValidate } from 'uuid';
 

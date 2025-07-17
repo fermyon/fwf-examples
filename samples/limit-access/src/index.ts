@@ -1,4 +1,5 @@
-import { Kv, Variables } from '@fermyon/spin-sdk';
+import * as Variables from '@spinframework/spin-variables';
+import * as Kv from '@spinframework/spin-kv';
 import { AutoRouter } from 'itty-router';
 import { Config, RequestTacking } from './models';
 

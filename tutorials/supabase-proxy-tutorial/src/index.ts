@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import { AutoRouter, IRequest, json } from 'itty-router';
+import { AutoRouter, json } from 'itty-router';
 import { ALL_ARTICLES_CACHE_KEY, buildKey, invalidate, readFromCache, storeInCache } from './cache';
 import { Config, withConfig } from './middlewares';
 import { processDatabaseUpdate } from './inform';

@@ -1,5 +1,6 @@
 import { AutoRouter } from 'itty-router';
-import { Mysql, Variables } from '@fermyon/spin-sdk';
+import * as Variables from '@spinframework/spin-variables';
+import * as Mysql from '@spinframework/spin-mysql';
 import { v4 as uuidv4 } from 'uuid';
 import { validate as uuidValidate } from 'uuid';
 
@@ -157,12 +158,7 @@ function updateProductById(id: string, requestBody: ArrayBuffer, connectionStrin
 
   // open MySQL connection
   const connection = Mysql.open(connectionString);
-  const updatedRows = connection.execute(SQL_UPDATE_BY_ID, [product.name, product.price, product.id]);
-
-  // if update did not affect any rows, return a not found
-  if (updatedRows == 0) {
-    return notFound("Product not found");
-  }
+  connection.execute(SQL_UPDATE_BY_ID, [product.name, product.price, product.id]);
 
   // construct a HTTP 200 response
   let customHeaders = {
@@ -181,12 +177,7 @@ function deleteProductById(id: string, connectionString: string) {
 
   // open MySQL connection
   const connection = Mysql.open(connectionString);
-  const deletedRows = connection.execute(SQL_DELETE_BY_ID, [id]);
-
-  // if delete did not affect any rows, return a not found
-  if (deletedRows == 0) {
-    return notFound("Product not found");
-  }
+  connection.execute(SQL_DELETE_BY_ID, [id]);
 
   // construct a HTTP 204 response
   return new Response(null, { status: 204 });

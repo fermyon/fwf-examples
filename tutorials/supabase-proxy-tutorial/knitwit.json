@@ -1,9 +1,0 @@
-{
-  "version": 1,
-  "packages": {
-    "@fermyon/spin-sdk": {
-      "witPath": "../../bin/wit",
-      "world": "spin-imports"
-    }
-  }
-}

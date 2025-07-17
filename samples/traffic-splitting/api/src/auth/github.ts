@@ -1,4 +1,4 @@
-import { Variables } from '@fermyon/spin-sdk';
+import * as Variables from '@spinframework/spin-variables';
 interface GitHubOAuthConfig {
     clientId: string;
     clientSecret: string;

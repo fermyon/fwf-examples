@@ -1,6 +1,6 @@
 // https://itty.dev/itty-router/routers/autorouter
 import { AutoRouter } from 'itty-router';
-import { Kv } from '@fermyon/spin-sdk';
+import * as Kv from '@spinframework/spin-kv';
 
 const decoder = new TextDecoder();
 let router = AutoRouter();

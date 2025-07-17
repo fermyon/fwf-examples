@@ -1,4 +1,4 @@
-import { Kv } from "@fermyon/spin-sdk";
+import * as Kv from "@spinframework/spin-kv";
 
 interface CacheData {
   expiresAt: string,

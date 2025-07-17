@@ -1,5 +1,5 @@
 import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
-import { Variables } from "@fermyon/spin-sdk";
+import * as Variables from "@spinframework/spin-variables";
 import { AutoRouter as Router } from "itty-router";
 
 let router = Router();

@@ -1,6 +1,6 @@
 import { AutoRouter, json } from 'itty-router';
 import { S3Client, GetObjectCommand, ListObjectsV2Command } from '@aws-sdk/client-s3';
-import { Variables } from '@fermyon/spin-sdk';
+import * as Variables from '@spinframework/spin-variables';
 
 const dec = new TextDecoder();
 const enc = new TextEncoder();

@@ -1,6 +1,6 @@
 // https://itty.dev/itty-router/routers/autorouter
 import { AutoRouter } from 'itty-router';
-import { Router, Variables } from "@fermyon/spin-sdk";
+import * as Variables from '@spinframework/spin-variables';
 
 let router = AutoRouter();
 

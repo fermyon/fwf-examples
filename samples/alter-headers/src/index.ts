@@ -3,10 +3,10 @@
 // Source: https://developers.cloudflare.com/workers/examples/alter-headers/
 // The original example is provided by Cloudflare under the MIT License.
 
-import * as spin from '@fermyon/spin-sdk';
+import * as variables from "@spinframework/spin-variables"
 
 async function fetchAltered(request: Request): Promise<Response> {
-    const originHost = spin.Variables.get('origin_host');
+    const originHost = variables.get('origin_host');
     if (!originHost) {
         return internalServerError("Origin site not configured");
     }
