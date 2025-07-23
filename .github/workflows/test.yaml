@@ -1,0 +1,56 @@
+name: Test
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Wasm Rust target
+        run: |
+          rustup target add wasm32-wasip1
+
+      - name: Install wizer
+        env:
+          WIZER_VERSION: v9.0.0
+        run: |
+          wget -O wizer-${{ env.WIZER_VERSION }}-x86_64-linux.tar.xz \
+            https://github.com/bytecodealliance/wizer/releases/download/${{ env.WIZER_VERSION }}/wizer-${{ env.WIZER_VERSION }}-x86_64-linux.tar.xz
+          tar -xf wizer-${{ env.WIZER_VERSION }}-x86_64-linux.tar.xz
+          mv wizer-${{ env.WIZER_VERSION }}-x86_64-linux/wizer /usr/local/bin/wizer
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+
+      - name: Setup TinyGo
+        uses: acifani/setup-tinygo@v2
+        with:
+          tinygo-version: '0.35.0'
+
+      - name: Install pnpm
+        run: |
+          npm install -g pnpm
+
+      - name: Install Spin
+        uses: fermyon/actions/spin/setup@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build apps
+        env:
+          ENABLE_WASM_OPT: false
+        run: |
+          make build-samples build-tutorials
+
+      - name: Test apps
+        env:
+          ENABLE_WASM_OPT: false
+          TIMEOUT: 2m
+        run: |
+          make test-samples test-tutorials
