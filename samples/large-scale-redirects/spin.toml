@@ -11,8 +11,8 @@ route = "/..."
 component = "redirects-rs"
 
 [component.redirects-rs]
-source = "target/redirect.wasm"
+source = "redirects.wasm"
 allowed_outbound_hosts = []
 [component.redirects-rs.build]
-command = "./build.sh example-redirects.txt"
+command = "./build.sh sources.fst targets.fcsd 302 redirects.wasm"
 watch = ["src/**/*.rs", "Cargo.toml", "build.sh", "redirects.txt"]
