@@ -14,5 +14,5 @@ component = "redirects-rs"
 source = "target/redirect.wasm"
 allowed_outbound_hosts = []
 [component.redirects-rs.build]
-command = "./build.sh example-redirects.txt"
+command = "./build.sh output/sources.fst output/targets.fcsd 302 target/redirect.wasm"
 watch = ["src/**/*.rs", "Cargo.toml", "build.sh", "redirects.txt"]
