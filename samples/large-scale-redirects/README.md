@@ -64,7 +64,7 @@ To adjust the set of words used, edit the script itself.
 ### Run the CLI
 
 ```shell
-./rules-manager \
+./target/release/rules-manager \
   --existing-rules existing_validated.txt \   # Optional: One or more previously validated rule files
   --add-rules new_rules1.txt new_rules2.txt \ # Optional: One or more new rule files
   --default-status-code 302 \                 # Default status code for redirects (default: 302)
@@ -80,7 +80,7 @@ To adjust the set of words used, edit the script itself.
 Control how the tool handles different validation issues:
 
 ```shell
-./rules-manager \
+./target/release/rules-manager \
   # ...other arguments...
   --self-loops warn \      # How to handle self-referential loops (ignore|warn|error)
   --loops error \          # How to handle multi-step loops (ignore|warn|error)
@@ -103,18 +103,18 @@ Typical workflow for deploying redirects:
 1. **Maintain a central validated rules file**:
    ```shell
    # First-time setup
-   ./rules-manager --add-rules initial_rules.txt --rules-output-file validated_rules.txt
+   ./target/release/rules-manager --add-rules initial_rules.txt --rules-output-file validated_rules.txt
 
    # Later, add more rules or update existing ones, and store the result in a new file
-   ./rules-manager --existing-rules validated_rules.txt --add-rules new_batch.txt --rules-output-file validated_rules_2.txt
+   ./target/release/rules-manager --existing-rules validated_rules.txt --add-rules new_batch.txt --rules-output-file validated_rules_2.txt
 
    # Alternatively, update the existing rules file
-   ./rules-manager --existing-rules validated_rules.txt --add-rules new_batch.txt --rules-output-file validated_rules.txt --include-existing
+   ./target/release/rules-manager --existing-rules validated_rules.txt --add-rules new_batch.txt --rules-output-file validated_rules.txt --include-existing
    ```
 
 2. **Generate optimized files for production**:
    ```shell
-   ./rules-manager --existing-rules validated_rules.txt \
+   ./target/release/rules-manager --existing-rules validated_rules.txt \
      --encoded-sources sources.fst \
      --encoded-targets targets.fcsd
    ```
