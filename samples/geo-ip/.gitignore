@@ -1,3 +1,4 @@
 target/
 .spin/
 .spin-aka/
+geoip-static-db/geoip.mmdb
