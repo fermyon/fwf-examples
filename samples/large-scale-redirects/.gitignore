@@ -1,3 +1,11 @@
 target/
 .spin/
 .spin-aka/
+venv/
+__pycache__/
+processed/
+*.wasm
+targets.fcsd
+sources.fst
+*.xlsx
+*.txt
