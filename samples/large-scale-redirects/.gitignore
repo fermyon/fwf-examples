@@ -9,3 +9,4 @@ targets.fcsd
 sources.fst
 *.xlsx
 *.txt
+fallbacks.json

@@ -1,0 +1,8 @@
+[
+    { "path_prefix": "/legacy-shop/us", "target": "https://shop.example.com/en-us" },
+    { "path_prefix": "/legacy-shop/uk", "target": "https://shop.example.com/en-gb" },
+    { "path_prefix": "/legacy-shop/de", "target": "https://shop.example.com/de" },
+    { "path_prefix": "/legacy-shop/fr", "target": "https://shop.example.com/fr" },
+    { "path_prefix": "/legacy-shop/es", "target": "https://shop.example.com/es" },
+    { "path_prefix": "/legacy-shop/jp", "target": "https://shop.example.com/ja" }
+]

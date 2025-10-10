@@ -1,6 +1,7 @@
 #!/bin/bash
 
 UNPROCESSED_XLSX=${1:-"data.xlsx"}
+FALLBACKS_JSON=${2:-"fallbacks.json"}
 
 python3 xlsx2txt.py $UNPROCESSED_XLSX processed 
 
@@ -15,9 +16,10 @@ for file in processed/*.txt; do
     # Extract just the filename without the path
     filename=$(basename "$file")
     
+    rm redirects.txt || true
     ./target/release/rules-manager --add-rules "$file" --rules-output-file redirects.txt 
-
-    ./build.sh sources.fst targets.fcsd 302 redirects.wasm
+    # TODO: the fallbacks.json file may be different for each domain, so one file may not be sufficient
+    ./build.sh sources.fst targets.fcsd $FALLBACKS_JSON 302 redirects.wasm
     # Unlink the workspace from the previous deployment
     spin aka app unlink || true
     filename_lower=$(echo "$filename" | tr '[:upper:]' '[:lower:]')
