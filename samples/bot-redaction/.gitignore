@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+
+# Spin
+.spin/
+.spin-aka/
+
+# Tools
+.claude/

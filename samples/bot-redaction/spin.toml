@@ -1,0 +1,15 @@
+spin_manifest_version = 2
+
+[application]
+name = "spin-realty-redaction"
+description = "Content Rewrite Demo - Spin WebAssembly App"
+version = "0.1.0"
+
+[[trigger.http]]
+route = "/..."
+component = "fileserver"
+
+[component.fileserver]
+source = { url = "https://github.com/fermyon/spin-fileserver/releases/download/v0.0.3/spin_static_fs.wasm", digest = "sha256:38bf971900228222f7f6b2ccee5051f399adca58d71692cdfdea98997965fd0d" }
+files = [{ source = ".", destination = "/" }]
+exclude_files = [".*", "*.md", "spin.toml"]

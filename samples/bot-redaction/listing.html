@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Real Estate Listings</title>
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <a href="#" class="logo" style="background: linear-gradient(135deg, #007FFF, #0059B3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"><span style="font-weight: 700;">Zeffity</span> <span class="font-light">Home</span></a>
+
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search by location, property type...">
+            </div>
+
+            <div class="nav-actions">
+                <div class="dropdown">
+                    <button class="dropdown-btn">Account ▼</button>
+                </div>
+                <div class="dropdown">
+                    <button class="dropdown-btn">Help ▼</button>
+                </div>
+                <button class="cart-btn">Saved (0)</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div style="display: flex; height: calc(100vh - 80px); overflow: hidden;">
+        <!-- Property Listing (Left 50%) -->
+        <main style="width: 50%; overflow-y: auto; padding: 24px; background-color: #f9fafb;">
+            <div class="section-header">
+                <h2>Available Properties (12 results)</h2>
+                <select class="sort-dropdown">
+                    <option>Sort by: Featured</option>
+                    <option>Price: Low to High</option>
+                    <option>Price: High to Low</option>
+                    <option>Newest First</option>
+                    <option>Most Bedrooms</option>
+                </select>
+            </div>
+
+            <div class="product-list">
+                <!-- Property 1 -->
+                <article class="product-item">
+                    <div class="product-image">
+                        <img src="assets/images/home-1.webp" alt="Modern Downtown Condo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Modern Downtown Condo</h3>
+                        <div class="product-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">Bedrooms:</span> 2 | <span class="meta-label">Bathrooms:</span> 2
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Square Feet:</span> 1,250 sq ft
+                            </div>
+                        </div>
+                        <div class="product-price">$485,000</div>
+                        <div class="product-actions">
+                            <button class="btn btn-primary">Schedule Tour</button>
+                            <button class="btn btn-secondary">View Details</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Property 2 -->
+                <article class="product-item">
+                    <div class="product-image">
+                        <img src="assets/images/home-2.webp" alt="Spacious Suburban Home" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Spacious Suburban Home</h3>
+                        <div class="product-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">Bedrooms:</span> 4 | <span class="meta-label">Bathrooms:</span> 3
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Square Feet:</span> 2,800 sq ft
+                            </div>
+                        </div>
+                        <div class="product-price">$725,000</div>
+                        <div class="product-actions">
+                            <button class="btn btn-primary">Schedule Tour</button>
+                            <button class="btn btn-secondary">View Details</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Property 3 -->
+                <article class="product-item">
+                    <div class="product-image">
+                        <img src="assets/images/home-3.webp" alt="Luxury Waterfront Estate" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Luxury Waterfront Estate</h3>
+                        <div class="product-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">Bedrooms:</span> 5 | <span class="meta-label">Bathrooms:</span> 4.5
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Square Feet:</span> 4,200 sq ft
+                            </div>
+                        </div>
+                        <div class="product-price">$1,850,000</div>
+                        <div class="product-actions">
+                            <button class="btn btn-primary">Schedule Tour</button>
+                            <button class="btn btn-secondary">View Details</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="page-btn" disabled>← Previous</button>
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn">4</button>
+                <button class="page-btn">Next →</button>
+            </div>
+        </main>
+
+        <!-- Map Section (Right 50%) -->
+        <aside style="width: 50%; height: 100%; background-color: #e5e7eb;">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d49315.08376937214!2d-105.14350534999999!3d40.1672068!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876bf3e39a940001%3A0x4e249c0b62ac5b43!2sDowntown%20Longmont%2C%20Longmont%2C%20CO!5e0!3m2!1sen!2sus!4v1647890123456!5m2!1sen!2sus"
+                width="100%"
+                height="100%"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </aside>
+    </div>
+</body>
+</html>
