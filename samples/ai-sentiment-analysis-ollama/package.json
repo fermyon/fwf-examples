@@ -26,7 +26,7 @@
     "@spinframework/spin-variables": "^1.0.0",
     "@spinframework/wasi-http-proxy": "^1.0.0",
     "abortcontroller-polyfill": "^1.7.8",
-    "hono": "^4.7.4",
+    "hono": "^4.10.2",
     "langchain": "0.3.19"
   }
 }
