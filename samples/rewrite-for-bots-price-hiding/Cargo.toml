@@ -1,0 +1,22 @@
+[package]
+name = "rewrite-for-bots-price-hiding"
+authors = ["itowlson <ivan.towlson@fermyon.com>"]
+description = ""
+version = "0.1.0"
+rust-version = "1.89"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+anyhow = "1"
+dom_smoothie = "0.11.1"
+lol_html = "2.1.0"
+regex = "1.11.1"
+serde = { version = "1.0.219", features = ["derive"] }
+serde_json = "1.0.141"
+spin-sdk = "5.0.0"
+url = "2.5.7"
+
+[workspace]
