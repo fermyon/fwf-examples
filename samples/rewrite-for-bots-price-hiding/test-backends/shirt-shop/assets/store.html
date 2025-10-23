@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Quality Apparel for Humans</title>
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <a href="#" class="logo">Uniloq <span class="font-light">Store</span></a>
+            
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search for t-shirts...">
+            </div>
+            
+            <div class="nav-actions">
+                <div class="dropdown">
+                    <button class="dropdown-btn">Account ▼</button>
+                </div>
+                <div class="dropdown">
+                    <button class="dropdown-btn">Help ▼</button>
+                </div>
+                <button class="cart-btn">Cart (0)</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Sidebar Filters -->
+        <aside class="sidebar">
+            <h3>Filters</h3>
+            
+            <div class="filter-group">
+                <h4>Category</h4>
+                <div class="filter-option">
+                    <input type="checkbox" id="mens" checked>
+                    <label for="mens">Men's T-Shirts</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="womens">
+                    <label for="womens">Women's T-Shirts</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="unisex">
+                    <label for="unisex">Unisex</label>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h4>Size</h4>
+                <div class="filter-option">
+                    <input type="checkbox" id="xs">
+                    <label for="xs">XS</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="s">
+                    <label for="s">S</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="m">
+                    <label for="m">M</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="l">
+                    <label for="l">L</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="xl">
+                    <label for="xl">XL</label>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h4>Color</h4>
+                <div class="filter-option">
+                    <input type="checkbox" id="black">
+                    <label for="black">Black</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="white">
+                    <label for="white">White</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="blue">
+                    <label for="blue">Blue</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="red">
+                    <label for="red">Red</label>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h4>Price Range</h4>
+                <div class="price-range">
+                    <input type="number" class="price-input" placeholder="Min" min="0">
+                    <span>-</span>
+                    <input type="number" class="price-input" placeholder="Max" min="0">
+                </div>
+            </div>
+        </aside>
+
+        <!-- Product Listing -->
+        <main class="product-section">
+            <div class="section-header">
+                <h2>T-Shirts (24 results)</h2>
+                <select class="sort-dropdown">
+                    <option>Sort by: Featured</option>
+                    <option>Price: Low to High</option>
+                    <option>Price: High to Low</option>
+                    <option>Newest First</option>
+                    <option>Best Selling</option>
+                </select>
+            </div>
+
+            <div class="product-list">
+                <!-- Product 1 -->
+                <article class="product-item">
+                    <div class="product-image">
+                        <img src="assets/images/store-shirt-1.jpg" alt="Classic Black Tee" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Classic Wasm Functions Tee</h3>
+                        <div class="product-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">Sizes:</span> XS, S, M, L, XL, XXL
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Colors:</span> Charcoal, Black
+                            </div>
+                        </div>
+                        <div class="product-price">$24.99</div>
+                        <div class="product-actions">
+                            <button class="btn btn-primary">Add to Cart</button>
+                            <button class="btn btn-secondary">Quick View</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product 2 -->
+                <article class="product-item">
+                    <div class="product-image">
+                        <img src="assets/images/store-shirt-2.jpg" alt="Vintage Graphic Tee" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Spin - Wasm Cube Edition</h3>
+                        <div class="product-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">Sizes:</span> S, M, L, XL
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Colors:</span> Heather Gray, Charcoal
+                            </div>
+                        </div>
+                        <div class="product-price">$32.99</div>
+                        <div class="product-actions">
+                            <button class="btn btn-primary">Add to Cart</button>
+                            <button class="btn btn-secondary">Quick View</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product 3 -->
+                <article class="product-item">
+                    <div class="product-image">
+                        <img src="assets/images/store-shirt-3.jpg" alt="Premium Cotton Tee" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Slats Doorway Shilouette</h3>
+                        <div class="product-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">Sizes:</span> XS, S, M, L, XL
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Colors:</span> White, Black, Teal, Purple
+                            </div>
+                        </div>
+                        <div class="product-price">$39.99</div>
+                        <div class="product-actions">
+                            <button class="btn btn-primary">Add to Cart</button>
+                            <button class="btn btn-secondary">Quick View</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="page-btn" disabled>← Previous</button>
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn">4</button>
+                <button class="page-btn">Next →</button>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

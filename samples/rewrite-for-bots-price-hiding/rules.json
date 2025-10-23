@@ -1,0 +1,10 @@
+[
+    {
+        "selectors": ["div.product-price"],
+        "replacement": "$<span class='gradient gradient-inline'></span>"
+    },
+    {
+        "selectors": ["div.product-image"],
+        "replacement": "<img src='assets/images/store-shirt.jpg' alt='Shirt' style='width: 100%; height: 100%; object-fit: cover; border-radius: 8px;'>"
+    }
+]
