@@ -13,6 +13,7 @@
 - [A/B Testing using Cookies](./samples/ab-testing-cookie/)
 - [A/B Testing using Key-Value Store](./samples/ab-testing-kv/)
 - [A/B Testing using HTTP Headers (e.g User Agent)](./samples/ab-testing-user-agent/)
+- [AI Crawler Content](./samples/ai-crawler-content/)
 - [AI Sentiment Analysis](./samples/ai-sentiment-analysis/)
 - [AI Sentiment Analysis (Ollama Edition)](./samples/ai-sentiment-analysis-ollama/)
 - [Alter Response Headers](./samples/alter-headers/)

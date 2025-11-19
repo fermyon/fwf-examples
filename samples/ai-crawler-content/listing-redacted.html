@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="Real estate listings in Downtown Longmont, CO. Browse available properties with detailed specifications.">
+    <title>Real Estate Listings - Longmont, CO | Zeffity Home</title>
+
+    <style>
+        .view-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-radius: 9999px;
+            padding: 4px;
+            display: flex;
+            gap: 4px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .view-toggle-btn {
+            padding: 8px 20px;
+            border-radius: 9999px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            background: transparent;
+            color: #6b7280;
+        }
+
+        .view-toggle-btn:hover {
+            color: #374151;
+        }
+
+        .view-toggle-btn.active {
+            background: #007FFF;
+            color: #ffffff;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #007FFF;
+        }
+
+        .site-info {
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .meta-info {
+            background: #f9fafb;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 24px;
+            font-size: 14px;
+        }
+
+        .meta-info strong {
+            color: #374151;
+        }
+
+        .property {
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 16px;
+            background: #f9fafb;
+        }
+
+        .property h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 16px;
+        }
+
+        .property-data {
+            background: #1e293b;
+            border-radius: 4px;
+            padding: 16px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.8;
+            color: #e2e8f0;
+        }
+
+        .property-data dt {
+            display: inline-block;
+            width: 140px;
+            color: #94a3b8;
+            font-weight: normal;
+        }
+
+        .property-data dt::after {
+            content: ':';
+            margin-left: 2px;
+        }
+
+        .property-data dd {
+            display: inline;
+            color: #f1f5f9;
+            font-weight: 500;
+        }
+
+        .property-data dd::after {
+            content: '\A';
+            white-space: pre;
+        }
+
+        .property-id {
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'Courier New', monospace;
+            font-size: 12px;
+            color: #9ca3af;
+            margin-top: 12px;
+            background: #f3f4f6;
+            padding: 6px 10px;
+            border-radius: 3px;
+            display: inline-block;
+        }
+
+        .contact-info {
+            background: #f3f4f6;
+            padding: 16px;
+            border-radius: 6px;
+            margin-top: 32px;
+            font-size: 14px;
+        }
+
+        .contact-info h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        footer {
+            margin-top: 32px;
+            padding-top: 16px;
+            border-top: 1px solid #e5e7eb;
+            font-size: 13px;
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+    <!-- View Toggle -->
+    <div class="view-toggle">
+        <button class="view-toggle-btn" data-view="user" onclick="window.location.href='listing.html'">User</button>
+        <button class="view-toggle-btn active" data-view="bot">Bot</button>
+    </div>
+
+    <!-- Structured Data for AI/Search Engines -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "RealEstateAgent",
+      "name": "Zeffity Home",
+      "url": "https://zeffityhome.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Longmont",
+        "addressRegion": "CO",
+        "addressCountry": "US"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Real Estate Listings",
+        "itemListElement": [
+          {
+            "@type": "Residence",
+            "name": "Modern Downtown Condo",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Downtown Longmont",
+              "addressRegion": "CO"
+            },
+            "numberOfRooms": 4,
+            "numberOfBedrooms": 2,
+            "numberOfBathroomsTotal": 2,
+            "floorSize": {
+              "@type": "QuantitativeValue",
+              "value": 1250,
+              "unitCode": "FTK"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "485000",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock"
+            }
+          },
+          {
+            "@type": "Residence",
+            "name": "Spacious Suburban Home",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Longmont",
+              "addressRegion": "CO"
+            },
+            "numberOfRooms": 7,
+            "numberOfBedrooms": 4,
+            "numberOfBathroomsTotal": 3,
+            "floorSize": {
+              "@type": "QuantitativeValue",
+              "value": 2800,
+              "unitCode": "FTK"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "725000",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock"
+            }
+          },
+          {
+            "@type": "Residence",
+            "name": "Luxury Waterfront Estate",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Longmont",
+              "addressRegion": "CO"
+            },
+            "numberOfRooms": 9.5,
+            "numberOfBedrooms": 5,
+            "numberOfBathroomsTotal": 4.5,
+            "floorSize": {
+              "@type": "QuantitativeValue",
+              "value": 4200,
+              "unitCode": "FTK"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "1850000",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+
+    <header>
+        <h1>Zeffity Home - Real Estate Listings</h1>
+        <p class="site-info">Premium real estate in Longmont, Colorado</p>
+    </header>
+
+    <div class="meta-info">
+        <strong>Search Results:</strong> 12 available properties<br>
+        <strong>Location:</strong> Downtown Longmont, CO<br>
+        <strong>Last Updated:</strong> 2025-11-18
+    </div>
+
+    <main>
+        <!-- Property 1 -->
+        <article class="property" itemscope itemtype="https://schema.org/Residence">
+            <h2 itemprop="name">Modern Downtown Condo</h2>
+
+            <dl class="property-data">
+                <dt>Property Type:</dt>
+                <dd itemprop="type">Condominium</dd>
+
+                <dt>Price:</dt>
+                <dd itemprop="price">$485,000 USD</dd>
+
+                <dt>Bedrooms:</dt>
+                <dd itemprop="numberOfBedrooms">2</dd>
+
+                <dt>Bathrooms:</dt>
+                <dd itemprop="numberOfBathroomsTotal">2</dd>
+
+                <dt>Square Feet:</dt>
+                <dd itemprop="floorSize">1,250 sq ft</dd>
+
+                <dt>Location:</dt>
+                <dd itemprop="address">Downtown Longmont, CO</dd>
+            </dl>
+
+            <p class="property-id">Property ID: ZEFF-2025-001</p>
+        </article>
+
+        <!-- Property 2 -->
+        <article class="property" itemscope itemtype="https://schema.org/Residence">
+            <h2 itemprop="name">Spacious Suburban Home</h2>
+
+            <dl class="property-data">
+                <dt>Property Type:</dt>
+                <dd itemprop="type">Single Family Home</dd>
+
+                <dt>Price:</dt>
+                <dd itemprop="price">$725,000 USD</dd>
+
+                <dt>Bedrooms:</dt>
+                <dd itemprop="numberOfBedrooms">4</dd>
+
+                <dt>Bathrooms:</dt>
+                <dd itemprop="numberOfBathroomsTotal">3</dd>
+
+                <dt>Square Feet:</dt>
+                <dd itemprop="floorSize">2,800 sq ft</dd>
+
+                <dt>Location:</dt>
+                <dd itemprop="address">Longmont, CO</dd>
+            </dl>
+
+            <p class="property-id">Property ID: ZEFF-2025-002</p>
+        </article>
+
+        <!-- Property 3 -->
+        <article class="property" itemscope itemtype="https://schema.org/Residence">
+            <h2 itemprop="name">Luxury Waterfront Estate</h2>
+
+            <dl class="property-data">
+                <dt>Property Type:</dt>
+                <dd itemprop="type">Estate</dd>
+
+                <dt>Price:</dt>
+                <dd itemprop="price">$1,850,000 USD</dd>
+
+                <dt>Bedrooms:</dt>
+                <dd itemprop="numberOfBedrooms">5</dd>
+
+                <dt>Bathrooms:</dt>
+                <dd itemprop="numberOfBathroomsTotal">4.5</dd>
+
+                <dt>Square Feet:</dt>
+                <dd itemprop="floorSize">4,200 sq ft</dd>
+
+                <dt>Location:</dt>
+                <dd itemprop="address">Longmont, CO</dd>
+            </dl>
+
+            <p class="property-id">Property ID: ZEFF-2025-003</p>
+        </article>
+    </main>
+
+    <div class="contact-info">
+        <h3>Contact Information</h3>
+        <p><strong>Zeffity Home</strong><br>
+        Email: listings@zeffityhome.com<br>
+        Phone: (555) 123-4567<br>
+        Office: Downtown Longmont, CO</p>
+    </div>
+
+    <footer>
+        <p>Page 1 of 4 | Showing 3 of 12 properties</p>
+        <p>&copy; 2025 Zeffity Home. All rights reserved.</p>
+    </footer>
+</body>
+</html>
