@@ -1,4 +1,4 @@
-import { Variables } from "@fermyon/spin-sdk";
+import * as Variables from '@spinframework/spin-variables';
 
 export class Metadata {
   url?: string;
