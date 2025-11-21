@@ -95,7 +95,7 @@ struct Args {
     rule_files: RuleFiles,
 
     /// Default status code for redirects
-    #[arg(value_parser = clap::value_parser!(u16).range(301..400), default_value = "302")]
+    #[arg(long, value_parser = clap::value_parser!(u16).range(301..400), default_value = "302")]
     default_status_code: u16,
 
     #[command(flatten)]
