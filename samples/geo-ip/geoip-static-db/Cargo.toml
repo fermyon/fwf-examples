@@ -7,7 +7,7 @@ edition = "2021"
 crate-type = ["cdylib"]
 
 [dependencies]
-maxminddb = "0.26.0"
+maxminddb = "0.27.0"
 wit-bindgen = "0.41"
 
 [workspace]
