@@ -45,6 +45,8 @@
   - This sample illustrates how to send GraphQL queries using a popular Rust library.
 - [HTML Rewrite](./samples/html-rewrite/)
   - TypeScript and Rust implementations for a Spin app that does HTML rewriting using CSS selectors.
+- [Image Conversion and Resizing](./samples/image-conversion/)
+  - A Rust implementation for a Spin app that enables converting between image formats and resizing the image.
 - [JWT Validator](./samples/jwt-validator/)
   - This folder contains a Spin application which is able to validate JWT tokens issued by any OAuth 2.0 & OpenID Connect compliant Identity Provider (or Token Issuer).
 - [Large-Scale Redirects](./samples/large-scale-redirects/)
