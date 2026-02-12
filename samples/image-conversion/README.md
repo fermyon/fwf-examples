@@ -6,7 +6,10 @@ A image conversion and resizing service built with [Spin](https://www.spinframew
 
 - **Multi-format Support**: Convert between PNG, JPEG, WebP, GIF, BMP, ICO, and TIFF
 - **Dynamic Resizing**: Resize images by width, height, or exact dimensions
-- **Quality Control**: Adjust JPEG compression quality (1-100)
+- **Quality Control**: 
+  - JPEG: Adjust quality (1-100)
+  - PNG: Control compression level (1-100, mapped to levels 1-9)
+  - WebP: Support for both lossy and lossless compression with explicit control via `lossless` parameter
 - **Auto-detection**: Automatically detects input image format
 
 ## Building and Running
@@ -43,11 +46,25 @@ curl -X POST --data-binary @input.png \
   -o output.jpg
 ```
 
-Convert to WebP:
+Convert to WebP with quality control:
 ```bash
 curl -X POST --data-binary @input.jpg \
-  "http://localhost:3000?format=webp" \
+  "http://localhost:3000?format=webp&quality=90" \
   -o output.webp
+```
+
+Convert to WebP lossless:
+```bash
+curl -X POST --data-binary @input.jpg \
+  "http://localhost:3000?format=webp&lossless=true" \
+  -o output.webp
+```
+
+Convert to PNG with compression:
+```bash
+curl -X POST --data-binary @input.jpg \
+  "http://localhost:3000?format=png&quality=85" \
+  -o output.png
 ```
 
 ### Resizing
@@ -97,7 +114,8 @@ POST /
 | `format` | string | Output format: `png`, `jpeg`, `webp`, `gif`, `bmp`, `ico`, `tiff` | `png` |
 | `width` | integer | Target width in pixels (maintains aspect ratio if height not set) | - |
 | `height` | integer | Target height in pixels (maintains aspect ratio if width not set) | - |
-| `quality` | integer | JPEG quality (1-100) | `90` |
+| `quality` | integer | Output quality (1-100):<br>• JPEG: Quality level<br>• PNG: Compression level (1-100 mapped to 1-9)<br>• WebP: Lossy quality when `lossless=false` (ignored when `lossless=true`) | `90` |
+| `lossless` | boolean | WebP only: Use lossless compression (`true`/`false`). When enabled, `quality` parameter is ignored. | `false` |
 
 ### Request Body
 

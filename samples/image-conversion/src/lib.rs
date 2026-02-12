@@ -1,8 +1,17 @@
 use spin_sdk::http::{IntoResponse, Request, Response};
 use spin_sdk::http_component;
-use image::{ImageOutputFormat, DynamicImage};
+use image::{
+    ImageFormat, DynamicImage,
+    codecs::{
+        jpeg::JpegEncoder, 
+        png::{PngEncoder, CompressionType, FilterType}
+    }
+};
+
 use std::io::Cursor;
 use url::Url;
+// We use image-webp for WebP encoding since the main image crate doesn't support lossless encoding or quality control for WebP yet
+use image_webp::{WebPEncoder, EncoderParams, ColorType};
 
 /// A dynamic image converter that supports multiple formats and resizing.
 /// 
@@ -10,9 +19,10 @@ use url::Url;
 /// - format: output format (png, jpeg, webp, gif, bmp, ico, tiff) - default: png
 /// - width: target width in pixels (maintains aspect ratio if height not provided)
 /// - height: target height in pixels (maintains aspect ratio if width not provided)
-/// - quality: JPEG quality 1-100 (default: 90)
+/// - quality: 1-100 (default: 90)
+/// - lossless: true/false (default: false, only applies to WebP)
 /// 
-/// Example: POST /convert?format=jpeg&width=800&quality=85
+/// Example: POST /convert?format=webp&width=800&quality=85
 #[http_component]
 fn handle_image_conversion(req: Request) -> anyhow::Result<impl IntoResponse> {
     match process_image(req) {
@@ -36,6 +46,7 @@ fn process_image(req: Request) -> anyhow::Result<Response> {
     let mut width = None;
     let mut height = None;
     let mut quality = 90;
+    let mut lossless = false;
     let mut validation_errors = Vec::new();
     
     for (key, value) in parsed_url.query_pairs() {
@@ -60,6 +71,13 @@ fn process_image(req: Request) -> anyhow::Result<Response> {
                     Ok(q) if q >= 1 && q <= 100 => quality = q,
                     Ok(q) => validation_errors.push(format!("Quality {} out of range (1-100)", q)),
                     Err(_) => validation_errors.push(format!("Invalid quality value: {}", value)),
+                }
+            },
+            "lossless" => {
+                match value.as_ref() {
+                    "true"  => lossless = true,
+                    "false" => lossless = false,
+                    _ => validation_errors.push(format!("Invalid lossless value: {} (use true/false)", value)),
                 }
             },
             _ => {}
@@ -92,13 +110,13 @@ fn process_image(req: Request) -> anyhow::Result<Response> {
     img = resize_image(img, width, height)?;
     
     let (img_format, content_type) = match output_format.to_lowercase().as_str() {
-        "jpeg" | "jpg" => (ImageOutputFormat::Jpeg(quality), "image/jpeg"),
-        "png" => (ImageOutputFormat::Png, "image/png"),
-        "webp" => (ImageOutputFormat::WebP, "image/webp"),
-        "gif" => (ImageOutputFormat::Gif, "image/gif"),
-        "bmp" => (ImageOutputFormat::Bmp, "image/bmp"),
-        "ico" => (ImageOutputFormat::Ico, "image/x-icon"),
-        "tiff" => (ImageOutputFormat::Tiff, "image/tiff"),
+        "jpeg" | "jpg" => (ImageFormat::Jpeg, "image/jpeg"),
+        "png" => (ImageFormat::Png, "image/png"),
+        "webp" => (ImageFormat::WebP, "image/webp"),
+        "gif" => (ImageFormat::Gif, "image/gif"),
+        "bmp" => (ImageFormat::Bmp, "image/bmp"),
+        "ico" => (ImageFormat::Ico, "image/x-icon"),
+        "tiff" => (ImageFormat::Tiff, "image/tiff"),
         _ => return Ok(Response::builder()
             .status(400)
             .header("content-type", "application/json")
@@ -107,8 +125,44 @@ fn process_image(req: Request) -> anyhow::Result<Response> {
     };
     
     let mut output = Vec::new();
-    img.write_to(&mut Cursor::new(&mut output), img_format)
-        .map_err(|e| anyhow::anyhow!("Failed to convert image to {}: {}", output_format, e))?;
+    let mut cursor = Cursor::new(&mut output);
+    
+    // Apply quality settings for formats that support it
+    match img_format {
+        ImageFormat::Jpeg => {
+            let encoder = JpegEncoder::new_with_quality(&mut cursor, quality);
+            img.write_with_encoder(encoder)
+                .map_err(|e| anyhow::anyhow!("Failed to convert image to JPEG: {}", e))?;
+        },
+        ImageFormat::Png => {
+            // Map quality (1-100) to compression level (1-9)
+            let compression_level = ((quality as f32 / 100.0) * 8.0 + 1.0) as u8;
+            let compression_level = compression_level.clamp(1, 9);
+            
+            let compression = CompressionType::Level(compression_level);
+            let encoder = PngEncoder::new_with_quality(&mut cursor, compression, FilterType::default());
+            img.write_with_encoder(encoder)
+                .map_err(|e| anyhow::anyhow!("Failed to convert image to PNG: {}", e))?;
+        },
+        ImageFormat::WebP => {
+            let mut params = EncoderParams::default();
+            if !lossless {
+                params.use_lossy = true;
+                params.lossy_quality = quality;
+            }
+            
+            let rgba = img.to_rgba8();
+            let (width, height) = (rgba.width(), rgba.height());
+            let mut encoder = WebPEncoder::new(&mut cursor);
+            encoder.set_params(params);
+            encoder.encode(rgba.as_raw(), width, height, ColorType::Rgba8)
+                .map_err(|e| anyhow::anyhow!("Failed to convert image to WebP: {}", e))?;
+        },
+        _ => {
+            img.write_to(&mut cursor, img_format)
+                .map_err(|e| anyhow::anyhow!("Failed to convert image to {}: {}", output_format, e))?;
+        }
+    }
     
     println!("Converted image to {} ({}x{}) - {} bytes", 
              output_format, img.width(), img.height(), output.len());
