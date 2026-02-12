@@ -1,2 +1,10 @@
 target/
 .spin/
+*.jpg
+*.jpeg
+*.bmp
+*.gif
+*.tiff
+*.ico
+*.webp
+*.png

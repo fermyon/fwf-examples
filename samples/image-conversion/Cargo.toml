@@ -11,7 +11,8 @@ crate-type = ["cdylib"]
 
 [dependencies]
 anyhow = "1"
-image = "0.24"
+image = "0.25.9"
+image-webp = { git = "https://github.com/image-rs/image-webp", rev = "a09c415245361f66bd595a899069970417c607a1" }
 spin-sdk = "5.0.0"
 url = "2.5"
 serde_json = "1.0"
