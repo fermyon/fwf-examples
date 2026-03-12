@@ -1,6 +1,0 @@
-type SitePerformance @table @export(name: "siteperformance"){
-   url: String @primaryKey,
-   earlyHint: String,
-   pageContent: String
-}
-

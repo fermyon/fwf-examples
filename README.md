@@ -35,8 +35,6 @@
   - This sample illustrates how you could bulk redirect requests using an object to map incoming requests to a configured redirection target.
 - [Cookie Parsing](./samples/parse-cookie/)
   - This sample demonstrates cookie parsing using the NPM `cookie` package.
-- [Early Hints with HarperDB](./samples/early-hints-rust)
-  - This sample showcases using Fermyon Wasm Functions to query HarperDB for early hints.
 - [Fetch JSON](./samples/fetch-json)
   - This example shows how to fetch data via a GET request, read in JSON and return the results.
 - [GeoIP](./samples/geo-ip/)
