@@ -19,7 +19,7 @@
     },
     "dependencies": {
         "@aws-sdk/client-s3": "^3.750.0",
-        "@spinframework/build-tools": "^1.0.1",
+        "@spinframework/build-tools": "^1.0.7",
         "@spinframework/wasi-http-proxy": "^1.0.0",
         "@spinframework/spin-variables": "^1.0.0",
         "itty-router": "^5.0.18"
